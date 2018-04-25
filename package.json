@@ -1,0 +1,19 @@
+{
+  "name": "parking-service",
+  "version": "0.0.0",
+  "description": "parking-service",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {},
+  "scripts": {
+    "build": "npm run build:admin && npm run build:server",
+    "build:admin": "cd src/AdminUI && npm run -s build",
+    "build:server": "cd src/Server && gradle build",
+    "install-deps": "cd src/AdminUI && npm install",
+    "lint": "npm run -s lint:backend && npm run -s lint:admin",
+    "lint:admin": "cd src/AdminUI && npm run -s lint",
+    "lint:backend": "cd src/Server && gradle lint",
+    "start:server": "cd src/Server && gradle bootRun",
+    "start:admin": "cd src/AdminUI && npm start"
+  }
+}
