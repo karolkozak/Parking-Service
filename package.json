@@ -6,14 +6,14 @@
   "private": true,
   "devDependencies": {},
   "scripts": {
-    "build": "npm run build:admin && npm run build:server",
+    "build": "npm run build:server && npm run build:admin",
     "build:admin": "cd src/AdminUI && npm run -s build",
-    "build:server": "cd src/Server && gradle build",
+    "build:server": "gradle build",
     "install-deps": "cd src/AdminUI && npm install",
     "lint": "npm run -s lint:backend && npm run -s lint:admin",
     "lint:admin": "cd src/AdminUI && npm run -s lint",
-    "lint:backend": "cd src/Server && gradle lint",
-    "start:server": "cd src/Server && gradle bootRun",
+    "lint:server": "gradle pmdMain",
+    "start:server": "gradle bootRun",
     "start:admin": "cd src/AdminUI && npm start"
   }
 }

@@ -1,0 +1,9 @@
+server:
+    address: 127.0.0.1
+    contextPath: /api
+    port: 8080
+
+cors:
+    access:
+        allowed:
+            origins: http://localhost:4200
