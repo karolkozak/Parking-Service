@@ -67,6 +67,8 @@ dependencies {
     compile("com.fasterxml.jackson.core:jackson-annotations:2.9.1")
     compile("com.fasterxml.jackson.core:jackson-core:2.9.1")
     compile("org.springframework.boot:spring-boot-starter-actuator:1.5.10.RELEASE")
+    compile("com.microsoft.azure:azure-servicebus:1.2.5")
+    compile("org.apache.commons:commons-lang3:3.7")
 
     testCompile("org.springframework.boot:spring-boot-starter-test:1.5.10.RELEASE")
 

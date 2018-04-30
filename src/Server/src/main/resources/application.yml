@@ -7,3 +7,7 @@ cors:
     access:
         allowed:
             origins: http://localhost:4200
+azure:
+    servicebus:
+        connection-string: Endpoint=sb://parkingapp.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=pvmiqJ5A1UJP4shCNasRC1iC8Wng7AdUv17kf5ZiTfI=
+        queue-name: plates
