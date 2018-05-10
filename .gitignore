@@ -1,3 +1,8 @@
 .idea/
 .gradle/
 build/
+.vs/
+/src/OpenCV/ParkingService/obj/
+/src/OpenCV/ParkingService/bin/
+/src/OpenCV/packages/
+/src/OpenCV/.vs/
