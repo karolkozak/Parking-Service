@@ -8,6 +8,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 public class ImageMessage implements Serializable {
+    private static final long serialVersionUID = 4943003061558382236L;
     private String message;
     private byte[] image;
 }

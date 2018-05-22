@@ -9,6 +9,7 @@ import com.microsoft.azure.servicebus.primitives.ServiceBusException;
 import com.parking.contract.IQueueMessageSender;
 import com.parking.model.ImageMessage;
 import org.apache.commons.lang3.SerializationUtils;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -16,13 +17,16 @@ import org.springframework.stereotype.Service;
 public class QueueMessageSender implements IQueueMessageSender {
 
     private IQueueClient queueClient;
+    private static final Logger LOGGER = Logger.getLogger(QueueMessageSender.class);
 
     public QueueMessageSender(@Value("${azure.servicebus.connection-string}") String connectionString,
                               @Value("${azure.servicebus.queue-name}") String queueName) {
         try {
             queueClient = new QueueClient(new ConnectionStringBuilder(connectionString, queueName), ReceiveMode.PEEKLOCK);
         } catch (InterruptedException | ServiceBusException e) {
-            e.printStackTrace();
+            if (LOGGER.isDebugEnabled()) {
+                LOGGER.debug(e.getMessage());
+            }
         }
     }
 
@@ -34,7 +38,9 @@ public class QueueMessageSender implements IQueueMessageSender {
             queueClient.send(msg);
             return true;
         } catch (InterruptedException | ServiceBusException e) {
-            e.printStackTrace();
+            if (LOGGER.isDebugEnabled()) {
+                LOGGER.debug(e.getMessage());
+            }
         }
         return false;
     }
