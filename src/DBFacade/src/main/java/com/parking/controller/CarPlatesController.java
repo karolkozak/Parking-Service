@@ -24,19 +24,19 @@ public class CarPlatesController {
         this.carPlateService = carPlateService;
     }
 
-    @GetMapping(value = "/all")
+    @GetMapping(value = "/plates")
     public List<CarPlate> findAll() {
         return carPlateService.getAll();
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/plates/{id}")
     public ResponseEntity getCarPlate(@PathVariable final Long id) {
         return carPlateService.getCarPlateById(id).<ResponseEntity>map(ResponseEntity::ok).orElseGet(()
                 -> ResponseEntity.status(HttpStatus.BAD_REQUEST).body("There is no such ID in database"));
     }
 
 
-    @PostMapping(value = "/savePlaceholder")
+    @PostMapping(value = "/plates")
     public ResponseEntity savePlaceholder(@RequestBody final String localDateTimeString) {
         try{
             LocalDateTime localDateTime = LocalDateTime.parse(localDateTimeString);
@@ -47,7 +47,7 @@ public class CarPlatesController {
         }
     }
 
-    @PostMapping(value = "/savePlate/{id}")
+    @PutMapping(value = "/plates/{id}")
     public ResponseEntity savePlate(@PathVariable final Long id, @RequestBody final String plate){
         try {
             carPlateService.savePlate(Long.valueOf(id), plate);

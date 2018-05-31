@@ -12,14 +12,15 @@
 
         **Zapisywanie placeholdera do bazy:**
 
-            http://localhost:8080/savePlaceholder
+            POST /plates 
     
             Body: LocalDateTime w formie stringa
             Result: id zapisanego placeholdera
 
+    **PUT
         **Zapisywanie Numeru tablicy (po odczycie):**
 
-        http://localhost:8080/savePlate/{id}
+        PUT /plates/{id}
         gdzie id to id przetrzymywanego placeholdera
     
             Body: numer tablicy jaki chcemy zapisać dla
@@ -29,11 +30,11 @@
     **GET
         **Pobieranie wszystkich tablic z bazy:**
         
-        http://localhost:8080/all
-        zwraca wszystkie obiekty CarPlate z bazy
+         GET /plates
+         zwraca wszystkie obiekty CarPlate z bazy
         
         **Pobieranie obiektu o danym id**
-         http://localhost:8080/{id}
+         GET /plates/{id}
          
          pobiera obiekt CarPlate o id = id z bazy
-    
+ ``
