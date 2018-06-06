@@ -1,9 +1,11 @@
 package com.parking.controller;
 
+import com.parking.contract.IBlobService;
 import com.parking.contract.IQueueMessageSender;
 import com.parking.exceptions.EmptyFIleException;
 import com.parking.model.ApiResponseBody;
 import com.parking.model.ImageMessage;
+import com.parking.service.BlobService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,9 @@ public class ImageController {
     @Autowired
     private IQueueMessageSender sender;
 
+    @Autowired
+    private IBlobService blobService;
+
     @PostMapping("/upload")
     public ResponseEntity<ApiResponseBody> uploadFile(@RequestParam("file") MultipartFile file) throws IOException {
         if (file.isEmpty()) {
@@ -27,13 +32,23 @@ public class ImageController {
         }
         String imageId = UUID.randomUUID().toString();
         byte[] bytes = file.getBytes();
-        ImageMessage img = new ImageMessage(imageId, bytes);
-        sender.send(img);
 
+        boolean succeeded = blobService.uploadImage(bytes, imageId);
+
+        if(succeeded) {
+            ImageMessage img = new ImageMessage(imageId);
+            sender.send(img);
+            return new ResponseEntity<>(new ApiResponseBody(imageId), HttpStatus.OK);
+        }
+        else {
+            return new ResponseEntity<>(new ApiResponseBody(imageId), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        //TODO: create entry in db
         // TODO: Do something with bytes
 //        boolean succeeded = sender.send(msg);
 
-        return new ResponseEntity<>(new ApiResponseBody(imageId), HttpStatus.OK);
+        //return new ResponseEntity<>(new ApiResponseBody(imageId), HttpStatus.OK);
     }
 
     @GetMapping("/{imageId}/ready")

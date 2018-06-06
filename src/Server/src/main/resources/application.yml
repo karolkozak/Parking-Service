@@ -11,3 +11,6 @@ azure:
     servicebus:
         connection-string: Endpoint=sb://parkingapp.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=pvmiqJ5A1UJP4shCNasRC1iC8Wng7AdUv17kf5ZiTfI=
         queue-name: plates
+    storage:
+        connection-string: DefaultEndpointsProtocol=https;AccountName=komponentystorage;AccountKey=OPSrsG3iJ3mT6y/CoYH1YReNPZL0nvhhD5WXEPpzbz6wnb1YYXVLQdmOm9xsiKA/uh2V2nIaX3JKy+9qVdqV9A==;EndpointSuffix=core.windows.net
+        container-name: license-plates
