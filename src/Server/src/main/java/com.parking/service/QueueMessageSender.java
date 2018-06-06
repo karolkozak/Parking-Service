@@ -1,5 +1,7 @@
 package com.parking.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.microsoft.azure.servicebus.IQueueClient;
 import com.microsoft.azure.servicebus.Message;
 import com.microsoft.azure.servicebus.QueueClient;
@@ -33,14 +35,18 @@ public class QueueMessageSender implements IQueueMessageSender {
     @Override
     public boolean send(ImageMessage message) {
         try {
-            byte[] data = SerializationUtils.serialize(message);
-            final Message msg = new Message(data);
+            ObjectMapper mapper = new ObjectMapper();
+            String jsonInString = mapper.writeValueAsString(message);
+            //byte[] data = SerializationUtils.serialize(message);
+            final Message msg = new Message(jsonInString);
             queueClient.send(msg);
             return true;
         } catch (InterruptedException | ServiceBusException e) {
             if (LOGGER.isDebugEnabled()) {
                 LOGGER.debug(e.getMessage());
             }
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
         }
         return false;
     }

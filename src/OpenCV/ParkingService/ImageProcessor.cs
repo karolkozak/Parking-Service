@@ -10,7 +10,7 @@ namespace ParkingService
         public static List<string> ProcessImageFilename(string filename)
         {
             LicensePlateDetector licensePlateDetector = new LicensePlateDetector("");
-            Mat m = new Mat("license-plate.png");
+            Mat m = new Mat(filename);
             //UMat um = m.GetUMat(AccessType.ReadWrite);
             return ProcessImage(m, licensePlateDetector);
         }
