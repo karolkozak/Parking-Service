@@ -5,7 +5,11 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingService", "ParkingService\ParkingService.csproj", "{A1FACCF0-B461-4284-9053-33CF3C2AB364}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestSendMessage", "TestSendMessage\TestSendMessage.csproj", "{0BE3F63B-5D4B-4FAB-BA66-A175CB5865CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestSendMessage", "TestSendMessage\TestSendMessage.csproj", "{0BE3F63B-5D4B-4FAB-BA66-A175CB5865CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingServiceWebJob", "ParkingServiceWebJob\ParkingServiceWebJob.csproj", "{7A32F07B-39FA-4CDF-B818-80770412FFB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ParkingServiceConsole", "ParkingServiceConsole\ParkingServiceConsole.csproj", "{0FBA27C5-B530-4E1F-BB8A-64F03D32C9E5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{0BE3F63B-5D4B-4FAB-BA66-A175CB5865CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BE3F63B-5D4B-4FAB-BA66-A175CB5865CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BE3F63B-5D4B-4FAB-BA66-A175CB5865CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A32F07B-39FA-4CDF-B818-80770412FFB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A32F07B-39FA-4CDF-B818-80770412FFB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A32F07B-39FA-4CDF-B818-80770412FFB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A32F07B-39FA-4CDF-B818-80770412FFB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FBA27C5-B530-4E1F-BB8A-64F03D32C9E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FBA27C5-B530-4E1F-BB8A-64F03D32C9E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FBA27C5-B530-4E1F-BB8A-64F03D32C9E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FBA27C5-B530-4E1F-BB8A-64F03D32C9E5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
