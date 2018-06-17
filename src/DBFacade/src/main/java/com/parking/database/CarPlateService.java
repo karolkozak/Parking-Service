@@ -14,8 +14,8 @@ public class CarPlateService {
         this.carPlateRepository = carPlateRepository;
     }
 
-    public Long savePlaceholder(LocalDateTime localDateTime){
-        CarPlate carPlate = new CarPlate(localDateTime);
+    public Long savePlaceholder(LocalDateTime entryTimestamp){
+        CarPlate carPlate = new CarPlate(entryTimestamp);
         return carPlateRepository.save(carPlate).getId();
     }
 
@@ -25,6 +25,11 @@ public class CarPlateService {
         carPlateRepository.save(carPlate);
     }
 
+    public void saveExitTime(Long id, LocalDateTime exitTimestamp){
+        CarPlate carPlate = carPlateRepository.getOne(id);
+        carPlate.setExitTimestamp(exitTimestamp);
+        carPlateRepository.save(carPlate);
+    }
     public Optional<CarPlate> getCarPlateById(Long id){
         return carPlateRepository.findById(id);
     }

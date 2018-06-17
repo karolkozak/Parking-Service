@@ -37,10 +37,10 @@ public class CarPlatesController {
 
 
     @PostMapping(value = "/plates")
-    public ResponseEntity savePlaceholder(@RequestBody final String localDateTimeString) {
+    public ResponseEntity savePlaceholder(@RequestBody final String entryTimestampString) {
         try{
-            LocalDateTime localDateTime = LocalDateTime.parse(localDateTimeString);
-            long id = carPlateService.savePlaceholder(localDateTime);
+            LocalDateTime entryTimestamp = LocalDateTime.parse(entryTimestampString);
+            long id = carPlateService.savePlaceholder(entryTimestamp);
             return ResponseEntity.ok(id);
         }catch (DateTimeParseException exception){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Send LocalDateTime as string");
@@ -55,5 +55,16 @@ public class CarPlatesController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("There is no " + id + " id in database");
         }
         return ResponseEntity.ok("Car plate " + plate + " saved for id " + id);
+    }
+
+    @PutMapping(value = "/plates/{id}/exit")
+    public ResponseEntity saveExitTimestamp(@PathVariable final Long id, @RequestBody final String exitTimestampString){
+        try {
+            LocalDateTime exitTimestamp = LocalDateTime.parse(exitTimestampString);
+            carPlateService.saveExitTime(Long.valueOf(id), exitTimestamp);
+        }catch (EntityNotFoundException e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("There is no " + id + " id in database");
+        }
+        return ResponseEntity.ok("Exit time saved for id " + id);
     }
 }

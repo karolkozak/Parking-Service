@@ -1,11 +1,8 @@
 package com.parking.database;
 
-import org.springframework.lang.Nullable;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Entity
@@ -13,13 +10,14 @@ public class CarPlate {
 
     @Id @GeneratedValue
     private Long id;
-    private LocalDateTime localDateTime;
+    private LocalDateTime entryTimestamp;
     private String plate;
+    private LocalDateTime exitTimestamp;
 
     protected CarPlate() {}
 
-    public CarPlate(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
+    public CarPlate(LocalDateTime entryTimestamp) {
+        this.entryTimestamp = entryTimestamp;
     }
 
     public Long getId() {
@@ -30,11 +28,19 @@ public class CarPlate {
         return plate;
     }
 
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
+    public LocalDateTime getEntryTimestamp() {
+        return entryTimestamp;
     }
 
     public void setPlate(String plate) {
         this.plate = plate;
+    }
+
+    public LocalDateTime getExitTimestamp() {
+        return exitTimestamp;
+    }
+
+    public void setExitTimestamp(LocalDateTime exitTimestamp) {
+        this.exitTimestamp = exitTimestamp;
     }
 }

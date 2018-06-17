@@ -3,7 +3,7 @@
    
     CarPlate
      Long id;
-     LocalDateTime localDateTime;
+     LocalDateTime entryTimestamp;
      String plate;
 
     API:
@@ -26,6 +26,15 @@
             Body: numer tablicy jaki chcemy zapisać dla
                 danego id
             Result: id nadpisanej encji
+            
+        **Zapisywanie czasu wyjazdu:**
+        
+        PUT /plates/{id}/exit
+        gdzie id to id encji w bazie danych
+        
+            Body: LocalDateTime w formie stringa
+            Result: id nadpisanej encji
+            
             
     **GET
         **Pobieranie wszystkich tablic z bazy:**
