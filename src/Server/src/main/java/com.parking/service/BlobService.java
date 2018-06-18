@@ -4,6 +4,7 @@ import com.microsoft.azure.storage.CloudStorageAccount;
 import com.microsoft.azure.storage.StorageException;
 import com.microsoft.azure.storage.blob.*;
 import com.parking.contract.IBlobService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,7 @@ import java.security.InvalidKeyException;
 public class BlobService implements IBlobService {
 
     private CloudBlobContainer container;
+    private static final Logger LOGGER = Logger.getLogger(BlobService.class);
 
     public BlobService(@Value("${azure.storage.container-name}") String containerName, @Value("${azure.storage.connection-string}") String connectionString) {
         try {
@@ -23,7 +25,9 @@ public class BlobService implements IBlobService {
 
             container = blobClient.getContainerReference(containerName);
         } catch (URISyntaxException | StorageException | InvalidKeyException e) {
-            e.printStackTrace();
+            if (LOGGER.isDebugEnabled()) {
+                LOGGER.debug(e.getMessage());
+            }
         }
     }
 
@@ -40,7 +44,9 @@ public class BlobService implements IBlobService {
 
 
         } catch (URISyntaxException | StorageException | IOException e) {
-            e.printStackTrace();
+            if (LOGGER.isDebugEnabled()) {
+                LOGGER.debug(e.getMessage());
+            }
             return false;
         }
 

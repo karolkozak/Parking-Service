@@ -1,7 +1,7 @@
 server:
     address: 127.0.0.1
     contextPath: /api
-    port: 8080
+    port: 8090
 
 cors:
     access:
@@ -14,3 +14,6 @@ azure:
     storage:
         connection-string: DefaultEndpointsProtocol=https;AccountName=komponentystorage;AccountKey=OPSrsG3iJ3mT6y/CoYH1YReNPZL0nvhhD5WXEPpzbz6wnb1YYXVLQdmOm9xsiKA/uh2V2nIaX3JKy+9qVdqV9A==;EndpointSuffix=core.windows.net
         container-name: license-plates
+
+dbFacade:
+    url: http://localhost:8080
