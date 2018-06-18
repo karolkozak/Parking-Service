@@ -10,7 +10,6 @@ import com.microsoft.azure.servicebus.primitives.ConnectionStringBuilder;
 import com.microsoft.azure.servicebus.primitives.ServiceBusException;
 import com.parking.contract.IQueueMessageSender;
 import com.parking.model.ImageMessage;
-import org.apache.commons.lang3.SerializationUtils;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -41,12 +40,10 @@ public class QueueMessageSender implements IQueueMessageSender {
             final Message msg = new Message(jsonInString);
             queueClient.send(msg);
             return true;
-        } catch (InterruptedException | ServiceBusException e) {
+        } catch (JsonProcessingException | InterruptedException | ServiceBusException e) {
             if (LOGGER.isDebugEnabled()) {
                 LOGGER.debug(e.getMessage());
             }
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
         }
         return false;
     }
