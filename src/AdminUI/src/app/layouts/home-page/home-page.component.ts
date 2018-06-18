@@ -18,16 +18,23 @@ export class HomePageComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.displayedColumns = ['id', 'localDateTime', 'plate'];
+    this.displayedColumns = ['id', 'entryTimestamp', 'plate', 'exitTimestamp'];
     this.parkingService.getAllData().subscribe(data => {
       this.carPlates = data;
       this.dataSource = new MatTableDataSource(this.carPlates);
     }, () => {
       this.carPlates = [
-        {'id': 1, 'localDateTime': '20/05/2018', 'plate': 'WE 23455'},
-        {'id': 2, 'localDateTime': '21/05/2018', 'plate': 'KR 23455'},
+        {'id': 1, 'entryTimestamp': '20/05/2018', 'plate': 'WE 23455', 'exitTimestamp': '20/05/2018'},
+        {'id': 2, 'entryTimestamp': '21/05/2018', 'plate': 'KR 23455', 'exitTimestamp': '22/05/2018'},
       ];
       this.dataSource = new MatTableDataSource(this.carPlates);
     });
+  }
+
+  getDate(date: any): string {
+    return date
+      ? `${date.dayOfMonth} ${date.month} ${date.year}: ${date.hour}:` +
+        `${date.minute.toString().length === 1 ? date.minute.toString().padStart(2, "0") : date.minute}:${date.second}`
+      : '';
   }
 }

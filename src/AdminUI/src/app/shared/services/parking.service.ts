@@ -13,6 +13,6 @@ export class ParkingService {
   }
 
   public getAllData(): Observable<CarPlate[]> {
-    return this.httpClient.get<CarPlate[]>(this.baseUrl + environment.imagesPath);
+    return this.httpClient.get<CarPlate[]>(this.baseUrl + environment.platesPath);
   }
 }

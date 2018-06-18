@@ -5,14 +5,19 @@
     <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
   </ng-container>
 
-  <ng-container matColumnDef="localDateTime">
+  <ng-container matColumnDef="entryTimestamp">
     <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
-    <mat-cell *matCellDef="let element"> {{element.localDateTime}} </mat-cell>
+    <mat-cell *matCellDef="let element"> {{getDate(element.entryTimestamp)}} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="plate">
     <mat-header-cell *matHeaderCellDef> Plate </mat-header-cell>
     <mat-cell *matCellDef="let element"> {{element.plate}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="exitTimestamp">
+    <mat-header-cell *matHeaderCellDef> Exit Date </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{getDate(element.exitTimestamp)}} </mat-cell>
   </ng-container>
 
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

@@ -1,5 +1,6 @@
 export interface CarPlate {
   id: number;
-  localDateTime: string;
+  entryTimestamp: string;
   plate: string;
+  exitTimestamp: string;
 }
