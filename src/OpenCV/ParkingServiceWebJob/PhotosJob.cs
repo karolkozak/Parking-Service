@@ -5,7 +5,10 @@ using Microsoft.WindowsAzure.Storage.Blob;
 using Newtonsoft.Json;
 using ParkingService;
 using System.IO;
+using System.Linq;
+using System.Configuration;
 using System.Threading.Tasks;
+using ParkingService.Services;
 
 namespace ParkingServiceWebJob
 {
@@ -23,10 +26,18 @@ namespace ParkingServiceWebJob
 
             var result = ImageProcessor.ProcessImageFilename(path);
 
+            var id = request.Filename;
+
             foreach (var word in result)
             {
                 logger.LogInformation(word);
             }
+
+            var dbFacadeUrl = ConfigurationManager.AppSettings["DbFacadeUrl"];
+
+            RequestManager requestManager = new RequestManager();
+            await requestManager.UpdateAsync(dbFacadeUrl + "/plates/" + id, result.First());
+
             File.Delete(path);
             logger.LogInformation("Successfully finished " + request.Filename);
             

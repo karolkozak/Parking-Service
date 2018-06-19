@@ -5,5 +5,11 @@ build/
 .vs/
 /src/OpenCV/ParkingService/obj/
 /src/OpenCV/ParkingService/bin/
+/src/OpenCV/ParkingServiceConsole/obj/
+/src/OpenCV/ParkingServiceConsole/bin/
+/src/OpenCV/ParkingServiceWebJob/obj/
+/src/OpenCV/ParkingServiceWebJob/bin/
+/src/OpenCV/TestSendMessage/obj/
+/src/OpenCV/TestSendMessage/bin/
 /src/OpenCV/packages/
 /src/OpenCV/.vs/

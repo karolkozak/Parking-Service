@@ -52,6 +52,22 @@ namespace ParkingService.Services
             return model;
         }
 
+        public async Task<string> UpdateAsync(string path, string model)
+        {
+            var stringContent = new StringContent(JsonConvert.SerializeObject(model), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.PutAsync(path, stringContent);
+
+            // If something went wrong, just return null.
+            if (!response.IsSuccessStatusCode)
+                return null;
+
+            // Read response as string.
+            var stringModel = await response.Content.ReadAsStringAsync();
+            // And next serialize to model.
+            model = stringModel;
+            return model;
+        }
+
         public async Task<HttpStatusCode> DeleteAsync(string path)
         {
             HttpResponseMessage response = await client.DeleteAsync(path);
